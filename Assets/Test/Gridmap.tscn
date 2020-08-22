@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Test/Cube_Wall_Tile.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Assets/Test/Wall_tex.png" type="Texture" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_offset = Vector3( 0.5, 0, 0.5 )
+uv1_triplanar = true
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -1, 2, -1, 1, 2, -1, -1, 2, 1, -1, 2, 1, 1, 2, -1, 1, 2, 1, 1, 2, 1, 1, 0, 1, -1, 2, 1, -1, 2, 1, 1, 0, 1, -1, 0, 1, -1, 2, 1, -1, 0, 1, -1, 2, -1, -1, 2, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1, -1, 0, -1, 1, 0, 1, 1, 0, 1, -1, 0, -1, -1, 0, 1, 1, 2, -1, 1, 0, -1, 1, 2, 1, 1, 2, 1, 1, 0, -1, 1, 0, 1, -1, 2, -1, -1, 0, -1, 1, 2, -1, 1, 2, -1, -1, 0, -1, 1, 0, -1 )
+
+[node name="Spatial" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.03773, -1.00822, -0.759299 )
+
+[node name="Cube_Wall_Tile" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7776, -1.33539, -1.40322 )
+mesh = ExtResource( 1 )
+material/0 = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube_Wall_Tile"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube_Wall_Tile/StaticBody"]
+shape = SubResource( 3 )
