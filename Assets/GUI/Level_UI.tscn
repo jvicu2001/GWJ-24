@@ -1,22 +1,133 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.04425, 0.035, 0.05, 0.254902 )
+[ext_resource path="res://Assets/GUI/Level_UI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GUI/PlayerBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/GUI/DogBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/GUI/Effects.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=5]
 
-[node name="Control" type="Control"]
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade_white"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -210.0
+margin_bottom = 116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerInfoBox" parent="GridContainer" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_right = 210.0
+margin_bottom = 56.0
+
+[node name="DogInfoBox" parent="GridContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 60.0
+margin_right = 210.0
+margin_bottom = 116.0
+
+[node name="Fade" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 1.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
+anims/fade_white = SubResource( 3 )
+
+[node name="Effects" type="ColorRect" parent="."]
 anchor_right = 1.0
-margin_left = -364.0
-margin_bottom = 147.0
-mouse_filter = 2
-custom_styles/panel = SubResource( 1 )
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 351.0
+margin_top = 260.0
+margin_right = 673.0
+margin_bottom = 339.0
+custom_fonts/font = SubResource( 4 )
+text = "YOU WIN!"
+align = 1
+valign = 1
+[connection signal="animation_finished" from="Fade/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

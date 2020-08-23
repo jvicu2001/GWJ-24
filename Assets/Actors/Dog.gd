@@ -16,9 +16,15 @@ var camera_angle = 0.0
 export var gravity = - 20
 var rot_mov = Vector2()
 
+var imprisoned = true
+
 var pups = []
 
 export var active = false
+
+var covering = false
+
+var caught = false
 
 var tooltip_text = "Pet"
 
@@ -36,6 +42,10 @@ func _input(_e):
 	inputs.mov_strength = max(abs(inputs.raw_mov.x), abs(inputs.raw_mov.y))
 	inputs.mov = inputs.raw_mov.normalized()
 	inputs.running = Input.is_action_pressed("player_run")
+	if Input.is_action_pressed("player_cover"):
+		covering = true
+	else:
+		covering = false
 #	inputs.mov = inputs.raw_mov.normalized() * inputs.mov_strength
 	
 
@@ -71,8 +81,7 @@ func rotate_model():
 
 
 func interaction(_source):
-	$Particles.set_emitting(true)
-	$Particles.set_emitting(false)
+	$AnimationPlayer.play("petted")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -81,5 +90,5 @@ func interaction(_source):
 
 func _physics_process(delta):
 	#$MeshInstance.rotate_y(-model_angle)
-	if active:
+	if active && !imprisoned:
 		move(delta)

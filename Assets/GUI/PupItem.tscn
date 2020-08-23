@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://PupUI.gd" type="Script" id=1]
+[ext_resource path="res://Assets/GUI/Pup2_inactive_con.png" type="Texture" id=2]
+
+[node name="Pup" type="TextureRect"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -16.0
+texture = ExtResource( 2 )
+stretch_mode = 6
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

@@ -1,0 +1,203 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Fonts/Montserrat-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/GUI/MainBG.png" type="Texture" id=2]
+[ext_resource path="res://Assets/GUI/Play.gd" type="Script" id=3]
+[ext_resource path="res://Assets/SFX/start1.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Assets/GUI/Controls.gd" type="Script" id=5]
+[ext_resource path="res://Assets/GUI/ControlsMenuCluse.gd" type="Script" id=6]
+[ext_resource path="res://Assets/GUI/GWJ-WC-2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/GUI/head_bg_less.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -143.837
+margin_right = 130.163
+margin_bottom = 308.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+margin_left = 962.521
+margin_top = -7.37582
+margin_right = 2462.52
+margin_bottom = 1992.62
+rect_scale = Vector2( 0.133028, 0.133028 )
+texture = ExtResource( 8 )
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
+margin_left = 190.024
+margin_top = 389.95
+margin_right = 1070.02
+margin_bottom = 1589.95
+rect_rotation = 10.8371
+rect_scale = Vector2( 0.147344, 0.147344 )
+texture = ExtResource( 7 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer"]
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/CenterContainer"]
+margin_left = 345.0
+margin_top = 104.0
+margin_right = 679.0
+margin_bottom = 193.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GridContainer/CenterContainer/MarginContainer"]
+margin_right = 334.0
+margin_bottom = 89.0
+custom_fonts/font = SubResource( 1 )
+text = "SHELTER"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer2" type="GridContainer" parent="GridContainer"]
+margin_top = 302.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="GridContainer/GridContainer2"]
+margin_right = 1024.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/GridContainer2/CenterContainer"]
+margin_left = 430.0
+margin_top = 25.0
+margin_right = 594.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="GridContainer/GridContainer2/CenterContainer/MarginContainer"]
+margin_right = 164.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 164, 95 )
+custom_fonts/font = SubResource( 2 )
+text = "Play"
+script = ExtResource( 3 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="GridContainer/GridContainer2"]
+margin_top = 151.0
+margin_right = 1024.0
+margin_bottom = 298.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer/GridContainer2/CenterContainer2"]
+margin_left = 421.0
+margin_top = 25.0
+margin_right = 602.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Button" parent="GridContainer/GridContainer2/CenterContainer2/MarginContainer"]
+margin_right = 181.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 164, 95 )
+custom_fonts/font = SubResource( 2 )
+text = "Controls"
+script = ExtResource( 5 )
+
+[node name="Controls" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Controls"]
+margin_left = 966.439
+margin_top = 26.2077
+margin_right = 999.439
+margin_bottom = 72.2077
+custom_fonts/font = SubResource( 4 )
+text = "X"
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.49829
+margin_top = 2.0
+margin_right = -1.49829
+margin_bottom = 2.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.00641639 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+anims/fade = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+[connection signal="pressed" from="GridContainer/GridContainer2/CenterContainer/MarginContainer/Play" to="GridContainer/GridContainer2/CenterContainer/MarginContainer/Play" method="_on_Play_pressed"]
+[connection signal="pressed" from="GridContainer/GridContainer2/CenterContainer2/MarginContainer/Controls" to="GridContainer/GridContainer2/CenterContainer2/MarginContainer/Controls" method="_on_Controls_pressed"]
+[connection signal="pressed" from="Controls/Button" to="Controls/Button" method="_on_Button_pressed"]
+[connection signal="animation_finished" from="ColorRect/AnimationPlayer" to="GridContainer/GridContainer2/CenterContainer/MarginContainer/Play" method="_on_AnimationPlayer_animation_finished"]

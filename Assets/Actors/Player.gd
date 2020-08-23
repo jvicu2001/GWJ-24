@@ -1,9 +1,6 @@
 extends KinematicBody
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var inputs = {
 	"raw_mov": Vector2(),
 	"mov": Vector2(),
@@ -26,6 +23,8 @@ export var active = false
 
 onready var camera_pivot = get_parent().get_node("CameraControl/Pivot")
 onready var camera = camera_pivot.get_node("Camera")
+
+var caught = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -92,7 +91,7 @@ func _physics_process(delta):
 	#$MeshInstance.rotate_y(-model_angle)
 	if active:
 		move(delta)
-		tooltip_handler()
+	tooltip_handler()
 
 func _on_Interaction_Area_body_entered(body):
 	if body != self && body.is_in_group("can_use") && interactive_object == null:

@@ -9,7 +9,7 @@ var ready = false
 
 var inputs = {
 	"camera_pan": 0.0,
-	"camera_angle": 0		# Maybe start at 45° (1)?
+	"camera_angle": 1		# Maybe start at 45° (1)?
 }
 
 onready var camera = $Pivot/Camera
