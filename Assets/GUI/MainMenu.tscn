@@ -46,30 +46,44 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -143.837
-margin_right = 130.163
-margin_bottom = 308.0
+margin_left = -109.457
+margin_top = -73.4162
+margin_right = 164.543
+margin_bottom = 234.584
 texture = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
-margin_left = 962.521
-margin_top = -7.37582
-margin_right = 2462.52
-margin_bottom = 1992.62
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -224.33
+margin_top = 16.6513
+margin_right = 1275.67
+margin_bottom = 2016.65
 rect_scale = Vector2( 0.133028, 0.133028 )
 texture = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect2" type="TextureRect" parent="TextureRect"]
-margin_left = 190.024
-margin_top = 389.95
-margin_right = 1070.02
-margin_bottom = 1589.95
+[node name="TextureRect3" type="TextureRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 64.5491
+margin_top = -220.942
+margin_right = 944.549
+margin_bottom = 979.058
 rect_rotation = 10.8371
 rect_scale = Vector2( 0.147344, 0.147344 )
 texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchor_right = 1.0
@@ -163,21 +177,27 @@ script = ExtResource( 5 )
 
 [node name="Controls" type="TextureRect" parent="."]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="Controls"]
-margin_left = 966.439
-margin_top = 26.2077
-margin_right = 999.439
-margin_bottom = 72.2077
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -54.3574
+margin_top = 22.6923
+margin_right = -21.3574
+margin_bottom = 68.6923
 custom_fonts/font = SubResource( 4 )
 text = "X"
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
