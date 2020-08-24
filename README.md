@@ -1,6 +1,8 @@
 # Shelter, for GJW-24
 Entry for Godot Wild Jam 24
 
+![Itch.io icon](itch.png)
+
 #### Current controls:
 - Movement: WASD / D-Pad / Left Analog Stick
 - Camera rotation: Left and Right Arrow Keys / L2-LT and R2-RT
