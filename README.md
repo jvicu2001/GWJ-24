@@ -1,4 +1,4 @@
-# Shelter, for GJW-24
+# Shelter, for GWJ-24
 Entry for Godot Wild Jam 24
 
 ![Itch.io icon](itch.png)
